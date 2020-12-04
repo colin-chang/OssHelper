@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 using Aliyun.Acs.Core;
 using Aliyun.Acs.Core.Auth.Sts;
 using Aliyun.Acs.Core.Profile;
@@ -107,6 +109,29 @@ namespace ColinChang.OssHelper
             var obj = request.ExtractOssObject();
             obj.Verify(_oss, _options[obj.MimeType]);
             return await Task.FromResult(obj);
+        }
+
+        public async Task DownloadAsync(string objectName, string filename)
+        {
+            var obj = _oss.GetObject(_options.PolicyOptions.BucketName, objectName);
+            await using var request = obj.Content;
+            var buf = new byte[5 * 1024];
+            await using var stream = File.OpenWrite(filename);
+            var len = 0;
+            while ((len = await request.ReadAsync(buf, 0, buf.Length)) != 0)
+                stream.Write(buf, 0, len);
+        }
+
+        public async Task<Stream> DownloadAsync(string objectName)
+        {
+            var obj = _oss.GetObject(_options.PolicyOptions.BucketName, objectName);
+            await using var request = obj.Content;
+            var buf = new byte[5 * 1024];
+            var stream = new MemoryStream();
+            var len = 0;
+            while ((len = await request.ReadAsync(buf, 0, buf.Length)) != 0)
+                stream.Write(buf, 0, len);
+            return stream;
         }
     }
 }

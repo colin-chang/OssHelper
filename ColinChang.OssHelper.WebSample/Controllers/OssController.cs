@@ -1,4 +1,7 @@
-﻿using System.Net;
+﻿using System;
+using System.IO;
+using System.Net;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Aliyun.Acs.Core.Auth.Sts;
@@ -46,6 +49,13 @@ namespace ColinChang.OssHelper.WebSample.Controllers
             // obj.Object
 
             return StatusCode((int) (obj != null ? HttpStatusCode.OK : HttpStatusCode.Forbidden));
+        }
+
+        [HttpGet]
+        public async Task DownloadAsync([FromQuery] string objectName)
+        {
+            var filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(objectName));
+            await _oss.DownloadAsync(objectName,filename);
         }
     }
 }
