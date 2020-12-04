@@ -1,5 +1,5 @@
 # OssHelper
-Oss Helper for .Net Core, which provide STS,Policy Authentication and common callback functions.
+Oss Helper for .Net Core, which provides STS, Policy Authentication, and common callback functions.
 
 ## [Nuget](https://www.nuget.org/packages/ColinChang.OssHelper)
 ```bash
@@ -48,7 +48,7 @@ Task<Stream> DownloadAsync(string objectName);
 ```
 
 ## Sample
-we just verify the mime type and size of the uploaded object in Callback function. about how to use this,please check the [Sample project](https://github.com/colin-chang/OssHelper/tree/main/ColinChang.OssHelper.WebSample).
+we just verify the mime type and size of the uploaded object in the Callback function. about how to use this, please check the [Sample project](https://github.com/colin-chang/OssHelper/tree/main/ColinChang.OssHelper.WebSample).
 
 be sure you've set your Access information in [appsettings.json](https://github.com/colin-chang/OssHelper/blob/main/ColinChang.OssHelper.WebSample/appsettings.json) before running the sample.
 
