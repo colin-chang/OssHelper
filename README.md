@@ -45,6 +45,20 @@ Task DownloadAsync(string objectName, string filename);
 /// <param name="objectName"></param>
 /// <returns></returns>
 Task<Stream> DownloadAsync(string objectName);
+
+/// <summary>
+/// 删除对象
+/// </summary>
+/// <param name="objectName"></param>
+/// <returns></returns>
+Task<DeleteObjectResult> DeleteObjectAsync(string objectName);
+
+/// <summary>
+/// 删除对象
+/// </summary>
+/// <param name="objectNames"></param>
+/// <returns></returns>
+Task<DeleteObjectsResult> DeleteObjectsAsync(IList<string> objectNames);
 ```
 
 ## Sample
