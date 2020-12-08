@@ -1,6 +1,8 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using Aliyun.Acs.Core.Auth.Sts;
+using Aliyun.OSS;
 using Microsoft.AspNetCore.Http;
 
 namespace ColinChang.OssHelper
@@ -40,5 +42,19 @@ namespace ColinChang.OssHelper
         /// <param name="objectName"></param>
         /// <returns></returns>
         Task<Stream> DownloadAsync(string objectName);
+
+        /// <summary>
+        /// 删除对象
+        /// </summary>
+        /// <param name="objectName"></param>
+        /// <returns></returns>
+        Task<DeleteObjectResult> DeleteObjectAsync(string objectName);
+        
+        /// <summary>
+        /// 删除对象
+        /// </summary>
+        /// <param name="objectNames"></param>
+        /// <returns></returns>
+        Task<DeleteObjectsResult> DeleteObjectsAsync(IList<string> objectNames);
     }
 }

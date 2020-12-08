@@ -133,5 +133,11 @@ namespace ColinChang.OssHelper
                 stream.Write(buf, 0, len);
             return stream;
         }
+
+        public Task<DeleteObjectResult> DeleteObjectAsync(string objectName)=>
+           Task.FromResult( _oss.DeleteObject(_options.PolicyOptions.BucketName, objectName));
+        
+        public Task<DeleteObjectsResult> DeleteObjectsAsync(IList<string> objectNames)=>
+            Task.FromResult( _oss.DeleteObjects(new DeleteObjectsRequest(_options.PolicyOptions.BucketName, objectNames)));
     }
 }
