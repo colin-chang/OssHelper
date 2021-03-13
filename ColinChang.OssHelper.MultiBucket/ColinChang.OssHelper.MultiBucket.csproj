@@ -13,7 +13,7 @@
         <Version>1.0.0</Version>
         <PackageVersion>1.0.0</PackageVersion>
         <PackageIcon>icon.png</PackageIcon>
-        <PackageIconUrl>https://raw.githubusercontent.com/colin-chang/RedisHelper/master/ColinChang.OssHelper/icon.png</PackageIconUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/colin-chang/OssHelper/main/icon.png</PackageIconUrl>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
