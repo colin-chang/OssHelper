@@ -2,7 +2,13 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColinChang.OssHelper", "ColinChang.OssHelper\ColinChang.OssHelper.csproj", "{5BB1037A-58DA-4DDE-A933-7D1F3B368061}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColinChang.OssHelper.WebSample", "ColinChang.OssHelper.WebSample\ColinChang.OssHelper.WebSample.csproj", "{18988F35-52FB-4A11-BF73-736B0282CA7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColinChang.OssHelper.SingleBucketSample", "ColinChang.OssHelper.SingleBucketSample\ColinChang.OssHelper.SingleBucketSample.csproj", "{18988F35-52FB-4A11-BF73-736B0282CA7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColinChang.OssHelper.MultiBucketSample", "ColinChang.OssHelper.MultiBucketSample\ColinChang.OssHelper.MultiBucketSample.csproj", "{0C6A9C16-BD35-48D3-8E1E-5E4FA3588061}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColinChang.OssHelper.WorkServiceSample", "ColinChang.OssHelper.WorkServiceSample\ColinChang.OssHelper.WorkServiceSample.csproj", "{7E87B016-47CF-4C1B-A964-D6421020187D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColinChang.OssHelper.MultiBucket", "ColinChang.OssHelper.MultiBucket\ColinChang.OssHelper.MultiBucket.csproj", "{9E453DD6-CA5D-4725-8A8E-DC345338EA33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +24,17 @@ Global
 		{18988F35-52FB-4A11-BF73-736B0282CA7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18988F35-52FB-4A11-BF73-736B0282CA7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18988F35-52FB-4A11-BF73-736B0282CA7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C6A9C16-BD35-48D3-8E1E-5E4FA3588061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C6A9C16-BD35-48D3-8E1E-5E4FA3588061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C6A9C16-BD35-48D3-8E1E-5E4FA3588061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C6A9C16-BD35-48D3-8E1E-5E4FA3588061}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E87B016-47CF-4C1B-A964-D6421020187D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E87B016-47CF-4C1B-A964-D6421020187D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E87B016-47CF-4C1B-A964-D6421020187D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E87B016-47CF-4C1B-A964-D6421020187D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E453DD6-CA5D-4725-8A8E-DC345338EA33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E453DD6-CA5D-4725-8A8E-DC345338EA33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E453DD6-CA5D-4725-8A8E-DC345338EA33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E453DD6-CA5D-4725-8A8E-DC345338EA33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

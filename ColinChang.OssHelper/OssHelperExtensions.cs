@@ -29,10 +29,6 @@ namespace ColinChang.OssHelper
             services.AddSingleton<IOptionsChangeTokenSource<OssHelperOptions>>(
                 new ConfigurationChangeTokenSource<OssHelperOptions>(config));
 
-            var options = new PolicyOptions();
-            config.Bind(nameof(PolicyOptions), options);
-            services.AddSingleton<IOss>(_ => new OssClient(options.EndPoint, options.AccessKeyId,
-                options.AccessKeySecret));
             services.AddSingleton<IOssHelper, OssHelper>();
 
             return services;

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Net;
-using System.Net.Mime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Aliyun.Acs.Core.Auth.Sts;
 
-namespace ColinChang.OssHelper.WebSample.Controllers
+namespace ColinChang.OssHelper.SingleBucketSample.Controllers
 {
     [ApiController]
     [Route("[controller]")]
