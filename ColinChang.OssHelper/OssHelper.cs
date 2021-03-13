@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Schema;
 using Aliyun.Acs.Core;
 using Aliyun.Acs.Core.Auth.Sts;
 using Aliyun.Acs.Core.Profile;
@@ -21,14 +20,18 @@ namespace ColinChang.OssHelper
     {
         private readonly OssHelperOptions _options;
         private readonly IOss _oss;
-        private readonly HttpClient _httpClient;
+        public HttpClient HttpClient { get; set; }
 
-        public OssHelper(IOptions<OssHelperOptions> options, IOss oss, HttpClient httpClient)
+        public OssHelper(IOptionsMonitor<OssHelperOptions> options, HttpClient httpClient)
         {
-            _options = options.Value;
-            _oss = oss;
-            _httpClient = httpClient;
+            _options = options.CurrentValue;
+            _oss = new OssClient(_options.PolicyOptions.EndPoint, _options.PolicyOptions.AccessKeyId,
+                _options.PolicyOptions.AccessKeySecret);
+            HttpClient = httpClient;
         }
+
+        public OssHelper(OssHelperOptions options) =>
+            _options = options;
 
         public async Task<AssumeRoleResponse.AssumeRole_Credentials> GetStsAsync()
         {
@@ -102,7 +105,7 @@ namespace ColinChang.OssHelper
 
         public async Task<OssObject> CallbackAsync(HttpRequest request)
         {
-            if (!await request.VerifyOssSignatureAsync(_options.StsOptions.PublicKeyIssuers, _httpClient))
+            if (!await request.VerifyOssSignatureAsync(_options.StsOptions.PublicKeyIssuers, HttpClient))
                 // throw new OssException("invalid signature");
                 return null;
 
@@ -134,10 +137,11 @@ namespace ColinChang.OssHelper
             return stream;
         }
 
-        public Task<DeleteObjectResult> DeleteObjectAsync(string objectName)=>
-           Task.FromResult( _oss.DeleteObject(_options.PolicyOptions.BucketName, objectName));
-        
-        public Task<DeleteObjectsResult> DeleteObjectsAsync(IList<string> objectNames)=>
-            Task.FromResult( _oss.DeleteObjects(new DeleteObjectsRequest(_options.PolicyOptions.BucketName, objectNames)));
+        public Task<DeleteObjectResult> DeleteObjectAsync(string objectName) =>
+            Task.FromResult(_oss.DeleteObject(_options.PolicyOptions.BucketName, objectName));
+
+        public Task<DeleteObjectsResult> DeleteObjectsAsync(IList<string> objectNames) =>
+            Task.FromResult(
+                _oss.DeleteObjects(new DeleteObjectsRequest(_options.PolicyOptions.BucketName, objectNames)));
     }
 }
