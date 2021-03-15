@@ -30,8 +30,12 @@ namespace ColinChang.OssHelper
             HttpClient = httpClient;
         }
 
-        public OssHelper(OssHelperOptions options) =>
+        public OssHelper(OssHelperOptions options)
+        {
             _options = options;
+            _oss = new OssClient(_options.PolicyOptions.EndPoint, _options.PolicyOptions.AccessKeyId,
+                _options.PolicyOptions.AccessKeySecret);
+        }
 
         public async Task<AssumeRoleResponse.AssumeRole_Credentials> GetStsAsync()
         {
