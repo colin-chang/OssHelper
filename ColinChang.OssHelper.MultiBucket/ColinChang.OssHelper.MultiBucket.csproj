@@ -9,9 +9,9 @@
         <RepositoryType>Git</RepositoryType>
         <PackageTags>aliyun oss sts policy callback app web multiple clients</PackageTags>
         <Description>an extension for OssHelper to support multiple clients in applications.</Description>
-        <PackageReleaseNotes>Optimize package extensibility.</PackageReleaseNotes>
-        <Version>1.0.1</Version>
-        <PackageVersion>1.0.1</PackageVersion>
+        <PackageReleaseNotes>fix bugs.</PackageReleaseNotes>
+        <Version>1.0.2</Version>
+        <PackageVersion>1.0.2</PackageVersion>
         <PackageIcon>icon.png</PackageIcon>
         <PackageIconUrl>https://raw.githubusercontent.com/colin-chang/OssHelper/main/icon.png</PackageIconUrl>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -28,7 +28,7 @@
     <ItemGroup>
         <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
         <PackageReference Include="AutoMapper" Version="10.1.1" />
-        <PackageReference Include="ColinChang.OssHelper" Version="1.2.0" />
+        <PackageReference Include="ColinChang.OssHelper" Version="1.2.1" />
     </ItemGroup>
 
     <ItemGroup>
