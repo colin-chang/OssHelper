@@ -19,7 +19,7 @@ namespace ColinChang.OssHelper
         /// 阿里云OSS Policy授权
         /// </summary>
         /// <returns></returns>
-        Task<dynamic> GetPolicyAsync(ObjectType category);
+        Task<dynamic> GetPolicyAsync(int category);
 
         /// <summary>
         /// OSS 通用回调

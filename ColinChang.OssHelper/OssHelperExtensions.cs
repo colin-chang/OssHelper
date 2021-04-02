@@ -19,18 +19,36 @@ namespace ColinChang.OssHelper
 {
     public static class OssHelperExtensions
     {
-        public static IServiceCollection AddOssHelper(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection AddOssHelper(this IServiceCollection services, IConfiguration configuration)
         {
+            if (services == null)
+                throw new ArgumentNullException(nameof(services));
+
+            if (configuration == null)
+                throw new ArgumentNullException(nameof(configuration));
+
             services.AddHttpClient();
 
             services.AddOptions<OssHelperOptions>()
-                .Configure(config.Bind)
+                .Configure(configuration.Bind)
                 .ValidateDataAnnotations();
             services.AddSingleton<IOptionsChangeTokenSource<OssHelperOptions>>(
-                new ConfigurationChangeTokenSource<OssHelperOptions>(config));
-
+                new ConfigurationChangeTokenSource<OssHelperOptions>(configuration));
             services.AddSingleton<IOssHelper, OssHelper>();
+            return services;
+        }
 
+        public static IServiceCollection AddOssHelper(this IServiceCollection services,
+            Action<OssHelperOptions> configureOptions)
+        {
+            if (services == null)
+                throw new ArgumentException(nameof(services));
+
+            if (configureOptions == null)
+                throw new ArgumentNullException(nameof(configureOptions));
+
+            services.Configure(configureOptions);
+            services.AddSingleton<IOssHelper, OssHelper>();
             return services;
         }
 

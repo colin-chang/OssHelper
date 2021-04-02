@@ -28,7 +28,7 @@ namespace ColinChang.OssHelper.SingleBucketSample.Controllers
         /// <param name="type"></param>
         /// <returns></returns>
         [HttpGet("{type}")]
-        public async Task<dynamic> GetAsync([FromRoute] ObjectType type)
+        public async Task<dynamic> GetAsync([FromRoute] int type)
         {
             Response.ContentType = "application/json;";
             Response.Headers.Add("Access-Control-Allow-Origin", "*");

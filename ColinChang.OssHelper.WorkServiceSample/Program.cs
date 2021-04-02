@@ -16,7 +16,7 @@ namespace ColinChang.OssHelper.WorkServiceSample
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-                .ConfigureServices((hostContext, services) =>
+                .ConfigureServices(services =>
                 {
                     services.AddHttpClient();
                     services.AddHostedService<Worker>();
