@@ -22,13 +22,9 @@ namespace ColinChang.OssHelper
         private readonly IOss _oss;
         public HttpClient HttpClient { get; set; }
 
-        public OssHelper(IOptionsMonitor<OssHelperOptions> options, HttpClient httpClient)
-        {
-            _options = options.CurrentValue;
-            _oss = new OssClient(_options.PolicyOptions.EndPoint, _options.PolicyOptions.AccessKeyId,
-                _options.PolicyOptions.AccessKeySecret);
+        public OssHelper(IOptionsMonitor<OssHelperOptions> options, HttpClient httpClient) :
+            this(options.CurrentValue) =>
             HttpClient = httpClient;
-        }
 
         public OssHelper(OssHelperOptions options)
         {
@@ -58,7 +54,7 @@ namespace ColinChang.OssHelper
             });
         }
 
-        public async Task<dynamic> GetPolicyAsync(ObjectType objectType)
+        public async Task<dynamic> GetPolicyAsync(int objectType)
         {
             return await Task.Run(() =>
             {

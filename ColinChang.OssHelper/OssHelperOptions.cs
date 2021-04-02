@@ -10,7 +10,7 @@ namespace ColinChang.OssHelper
         public PolicyOptions PolicyOptions { get; set; }
         public ObjectOption[] ObjectOptions { get; set; }
 
-        public ObjectOption this[ObjectType objectType] =>
+        public ObjectOption this[int objectType] =>
             ObjectOptions.FirstOrDefault(o => o.ObjectType == objectType);
 
         public ObjectOption this[string mimeType] =>
@@ -48,7 +48,7 @@ namespace ColinChang.OssHelper
 
     public class ObjectOption
     {
-        public ObjectType ObjectType { get; set; }
+        public int ObjectType { get; set; }
         public string UploadDir { get; set; }
         public long MaxSize { get; set; }
         public IEnumerable<string> AllowedMimeTypes { get; set; }
