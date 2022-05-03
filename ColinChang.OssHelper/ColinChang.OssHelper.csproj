@@ -27,7 +27,7 @@
     <ItemGroup>
         <PackageReference Include="aliyun-net-sdk-sts" Version="3.0.4" />
         <PackageReference Include="Aliyun.OSS.SDK.NetCore" Version="2.13.0" />
-        <PackageReference Include="BouncyCastle.Crypto.dll" Version="1.8.1" />
+        <PackageReference Include="XC.BouncyCastle.Crypto" Version="1.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
         <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
