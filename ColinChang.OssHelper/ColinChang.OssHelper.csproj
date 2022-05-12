@@ -9,8 +9,8 @@
         <RepositoryType>Git</RepositoryType>
         <PackageTags>aliyun oss sts policy callback app web</PackageTags>
         <Description>Oss Helper for .Net Core, which provide STS,Policy Authentication and common callback functions.</Description>
-        <PackageReleaseNotes>remove ObjectType enum.</PackageReleaseNotes>
-        <PackageVersion>1.2.2</PackageVersion>
+        <PackageReleaseNotes>update dependencies</PackageReleaseNotes>
+        <PackageVersion>1.2.3</PackageVersion>
         <PackageIcon>icon.png</PackageIcon>
         <PackageIconUrl>https://raw.githubusercontent.com/colin-chang/OssHelper/main/icon.png</PackageIconUrl>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -25,15 +25,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="aliyun-net-sdk-sts" Version="3.0.4" />
+        <PackageReference Include="aliyun-net-sdk-sts" Version="3.1.0" />
         <PackageReference Include="Aliyun.OSS.SDK.NetCore" Version="2.13.0" />
         <PackageReference Include="XC.BouncyCastle.Crypto" Version="1.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="6.0.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     </ItemGroup>
 
