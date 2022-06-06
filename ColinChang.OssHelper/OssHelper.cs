@@ -63,7 +63,7 @@ namespace ColinChang.OssHelper
                 {
                     //OSS 大小写敏感，切勿修改
                     expiration = expireTime.ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'", CultureInfo.CurrentCulture),
-                    conditions = new List<IList<object>> {new List<object>()}
+                    conditions = new List<IList<object>> { new List<object>() }
                 };
                 config.conditions[0].Add("content-length-range");
                 config.conditions[0].Add(0);
@@ -78,7 +78,7 @@ namespace ColinChang.OssHelper
                 var policy = Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(config)));
 
                 using var algorithm = new HMACSHA1
-                    {Key = Encoding.UTF8.GetBytes(_options.PolicyOptions.AccessKeySecret)};
+                    { Key = Encoding.UTF8.GetBytes(_options.PolicyOptions.AccessKeySecret) };
                 var signature = Convert.ToBase64String(
                     algorithm.ComputeHash(Encoding.UTF8.GetBytes(policy)));
 
@@ -112,6 +112,12 @@ namespace ColinChang.OssHelper
             var obj = request.ExtractOssObject();
             obj.Verify(_oss, _options[obj.MimeType]);
             return await Task.FromResult(obj);
+        }
+
+        public Task<IEnumerable<OssObjectSummary>> ListObjectsAsync()
+        {
+            //https://help.aliyun.com/document_detail/187544.htm?spm=a2c4g.11186623.0.0.33bc4f695Jg7o0#reference-2520881
+            return Task.FromResult(_oss.ListObjects(_options.PolicyOptions.BucketName).ObjectSummaries);
         }
 
         public async Task DownloadAsync(string objectName, string filename)

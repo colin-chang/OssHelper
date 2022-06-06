@@ -29,6 +29,12 @@ namespace ColinChang.OssHelper
         Task<OssObject> CallbackAsync(HttpRequest request);
 
         /// <summary>
+        /// 列举文件
+        /// </summary>
+        /// <returns></returns>
+        Task<IEnumerable<OssObjectSummary>> ListObjectsAsync();
+
+        /// <summary>
         /// 流式下载(如果要下载的文件太大，或者一次性下载耗时太长，您可以通过流式下载，一次处理部分内容，直到完成文件的下载)
         /// </summary>
         /// <param name="objectName"></param>
@@ -49,7 +55,7 @@ namespace ColinChang.OssHelper
         /// <param name="objectName"></param>
         /// <returns></returns>
         Task<DeleteObjectResult> DeleteObjectAsync(string objectName);
-        
+
         /// <summary>
         /// 删除对象
         /// </summary>
