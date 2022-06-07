@@ -114,10 +114,18 @@ namespace ColinChang.OssHelper
             return await Task.FromResult(obj);
         }
 
-        public Task<IEnumerable<OssObjectSummary>> ListObjectsAsync()
+        public Task<IEnumerable<OssObjectSummary>> ListObjectsAsync(string prefix = null, string marker = null,
+            int? maxKeys = null, string delimiter = null)
         {
-            //https://help.aliyun.com/document_detail/187544.htm?spm=a2c4g.11186623.0.0.33bc4f695Jg7o0#reference-2520881
-            return Task.FromResult(_oss.ListObjects(_options.PolicyOptions.BucketName).ObjectSummaries);
+            var request = new ListObjectsRequest(_options.PolicyOptions.BucketName)
+            {
+                Prefix = prefix,
+                Marker = marker,
+                MaxKeys = maxKeys,
+                Delimiter = delimiter
+            };
+            var response = _oss.ListObjects(request);
+            return Task.FromResult(response.ObjectSummaries);
         }
 
         public async Task DownloadAsync(string objectName, string filename)

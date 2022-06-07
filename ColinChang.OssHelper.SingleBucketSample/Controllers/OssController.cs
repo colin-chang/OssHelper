@@ -24,27 +24,25 @@ namespace ColinChang.OssHelper.SingleBucketSample.Controllers
         [HttpPost]
         public async Task<AssumeRoleResponse.AssumeRole_Credentials> PostAsync() => await _oss.GetStsAsync();
 
-        [HttpGet]
-        public async Task<IEnumerable<OssObjectSummary>> GetAsync()
-        {
-            var result = await _oss.ListObjectsAsync();
-            return result;
-        }
+        [HttpGet("ListObjects")]
+        public async Task<IEnumerable<OssObjectSummary>> GetAsync([FromQuery] ListRequest request) =>
+            await _oss.ListObjectsAsync(request.Prefix, request.Mark, request.MaxKeys, request.Delimiter);
+
 
         /// <summary>
         /// Policy
         /// </summary>
         /// <param name="type"></param>
-        // /// <returns></returns>
-        // [HttpGet("{type}")]
-        // public async Task<dynamic> GetAsync([FromRoute] int type)
-        // {
-        //     Response.ContentType = "application/json;";
-        //     Response.Headers.Add("Access-Control-Allow-Origin", "*");
-        //     Response.Headers.Add("Access-Control-Allow-Method", "GET, POST");
-        //     Response.Headers.Add("Connection", "close");
-        //     return Ok(await _oss.GetPolicyAsync(type));
-        // }
+        /// <returns></returns>
+        [HttpGet("{type}")]
+        public async Task<dynamic> GetAsync([FromRoute] int type)
+        {
+            Response.ContentType = "application/json;";
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            Response.Headers.Add("Access-Control-Allow-Method", "GET, POST");
+            Response.Headers.Add("Connection", "close");
+            return Ok(await _oss.GetPolicyAsync(type));
+        }
 
         /// <summary>
         /// Callback
@@ -59,11 +57,11 @@ namespace ColinChang.OssHelper.SingleBucketSample.Controllers
             return StatusCode((int)(obj != null ? HttpStatusCode.OK : HttpStatusCode.Forbidden));
         }
 
-        // [HttpGet]
-        // public async Task DownloadAsync([FromQuery] string objectName)
-        // {
-        //     var filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(objectName));
-        //     await _oss.DownloadAsync(objectName, filename);
-        // }
+        [HttpGet]
+        public async Task DownloadAsync([FromQuery] string objectName)
+        {
+            var filename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(objectName));
+            await _oss.DownloadAsync(objectName, filename);
+        }
     }
 }
