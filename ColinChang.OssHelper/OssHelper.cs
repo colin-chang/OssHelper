@@ -114,7 +114,7 @@ namespace ColinChang.OssHelper
             return await Task.FromResult(obj);
         }
 
-        public Task<IEnumerable<OssObjectSummary>> ListObjectsAsync(string prefix = null, string marker = null,
+        public Task<ObjectListing> ListObjectsAsync(string prefix = null, string marker = null,
             int? maxKeys = null, string delimiter = null)
         {
             var request = new ListObjectsRequest(_options.PolicyOptions.BucketName)
@@ -124,8 +124,7 @@ namespace ColinChang.OssHelper
                 MaxKeys = maxKeys,
                 Delimiter = delimiter
             };
-            var response = _oss.ListObjects(request);
-            return Task.FromResult(response.ObjectSummaries);
+            return Task.FromResult(_oss.ListObjects(request));
         }
 
         public async Task DownloadAsync(string objectName, string filename)

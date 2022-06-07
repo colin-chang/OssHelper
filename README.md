@@ -39,7 +39,7 @@ Task<OssObject> CallbackAsync(HttpRequest request);
 /// <param name="maxKeys">指定返回Object的最大数。</param>
 /// <param name="delimiter">对Object名字进行分组的字符。所有Object名字包含指定的前缀，第一次出现delimiter字符之间的Object作为一组元素</param>
 /// <returns></returns>
-Task<IEnumerable<OssObjectSummary>> ListObjectsAsync(string prefix = null, string marker = null,
+Task<ObjectListing> ListObjectsAsync(string prefix = null, string marker = null,
     int? maxKeys = null, string delimiter = null);
 
 /// <summary>

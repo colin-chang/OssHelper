@@ -25,7 +25,7 @@ namespace ColinChang.OssHelper.SingleBucketSample.Controllers
         public async Task<AssumeRoleResponse.AssumeRole_Credentials> PostAsync() => await _oss.GetStsAsync();
 
         [HttpGet("ListObjects")]
-        public async Task<IEnumerable<OssObjectSummary>> GetAsync([FromQuery] ListRequest request) =>
+        public async Task<ObjectListing> GetAsync([FromQuery] ListRequest request) =>
             await _oss.ListObjectsAsync(request.Prefix, request.Mark, request.MaxKeys, request.Delimiter);
 
 

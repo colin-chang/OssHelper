@@ -9,8 +9,8 @@
         <RepositoryType>Git</RepositoryType>
         <PackageTags>aliyun oss sts policy callback app web</PackageTags>
         <Description>Oss Helper for .Net Core, which provide STS,Policy Authentication and common callback functions.</Description>
-        <PackageReleaseNotes>extend ListObjects function</PackageReleaseNotes>
-        <PackageVersion>1.2.4</PackageVersion>
+        <PackageReleaseNotes>修改ListObjects返回类型</PackageReleaseNotes>
+        <PackageVersion>1.2.5</PackageVersion>
         <PackageIcon>icon.png</PackageIcon>
         <PackageIconUrl>https://raw.githubusercontent.com/colin-chang/OssHelper/main/icon.png</PackageIconUrl>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
