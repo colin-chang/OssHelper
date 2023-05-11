@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
@@ -156,5 +157,14 @@ namespace ColinChang.OssHelper
         public Task<DeleteObjectsResult> DeleteObjectsAsync(IList<string> objectNames) =>
             Task.FromResult(
                 _oss.DeleteObjects(new DeleteObjectsRequest(_options.PolicyOptions.BucketName, objectNames)));
+
+        public async Task<PutObjectResult> PutObjectAsync(string fileName, int objectType, byte[] data)
+        {
+            string key = Path.Combine(_options.ObjectOptions.SingleOrDefault(x => x.ObjectType == objectType)!.UploadDir, fileName);
+
+            using var stream = new MemoryStream(data);
+
+            return _oss.PutObject(_options.PolicyOptions.BucketName, key, stream);
+        }
     }
 }
