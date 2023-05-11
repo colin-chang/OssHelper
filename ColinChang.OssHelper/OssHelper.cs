@@ -16,21 +16,24 @@ using Microsoft.AspNetCore.Http;
 
 namespace ColinChang.OssHelper
 {
-    public class OssHelper : IOssHelper
+    public class OssHelper : IOssHelper, IDisposable
     {
         private readonly OssHelperOptions _options;
         private readonly IOss _oss;
         public HttpClient HttpClient { get; set; }
 
         public OssHelper(IOptionsMonitor<OssHelperOptions> options, HttpClient httpClient) :
-            this(options.CurrentValue) =>
+            this(options.CurrentValue)
+        {
             HttpClient = httpClient;
+        }
 
         public OssHelper(OssHelperOptions options)
         {
             _options = options;
             _oss = new OssClient(_options.PolicyOptions.EndPoint, _options.PolicyOptions.AccessKeyId,
                 _options.PolicyOptions.AccessKeySecret);
+            HttpClient = HttpClient ?? new HttpClient();
         }
 
         public async Task<AssumeRoleResponse.AssumeRole_Credentials> GetStsAsync()
@@ -156,5 +159,8 @@ namespace ColinChang.OssHelper
         public Task<DeleteObjectsResult> DeleteObjectsAsync(IList<string> objectNames) =>
             Task.FromResult(
                 _oss.DeleteObjects(new DeleteObjectsRequest(_options.PolicyOptions.BucketName, objectNames)));
+
+        public void Dispose() =>
+            HttpClient?.Dispose();
     }
 }

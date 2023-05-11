@@ -21,7 +21,7 @@ namespace ColinChang.OssHelper.SingleBucketSample
             services.AddControllers();
             services.AddSwaggerGen(c =>
                 c.SwaggerDoc("v1",
-                    new OpenApiInfo {Title = "ColinChang.OssHelper.SingleBucketSample", Version = "v1"}));
+                    new OpenApiInfo { Title = "ColinChang.OssHelper.SingleBucketSample", Version = "v1" }));
         }
 
 

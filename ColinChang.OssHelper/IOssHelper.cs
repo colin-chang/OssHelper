@@ -31,7 +31,7 @@ namespace ColinChang.OssHelper
         /// <summary>
         /// 列举文件
         /// </summary>
-        /// <param name="prefix">限定返回文件的Key必须以prefix作为前缀。如果把prefix设为某个文件夹名，则列举以此prefix开头的文件，即该文件夹下递归的所有文件和子文件夹。如果把prefix设为某个文件夹名，则列举以此prefix开头的文件，即该文件夹下递归的所有文件和子文件夹。</param>
+        /// <param name="prefix">限定返回文件的Key必须以prefix作为前缀。如果把prefix设为某个文件夹名，则列举以此prefix开头的文件，即该文件夹下递归的所有文件和子文件夹。</param>
         /// <param name="marker">指定List操作需要从此文件开始</param>
         /// <param name="maxKeys">指定返回Object的最大数。</param>
         /// <param name="delimiter">对Object名字进行分组的字符。所有Object名字包含指定的前缀，第一次出现delimiter字符之间的Object作为一组元素</param>

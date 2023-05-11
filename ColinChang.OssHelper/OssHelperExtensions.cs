@@ -80,7 +80,7 @@ namespace ColinChang.OssHelper
                 .Replace("-----BEGIN PUBLIC KEY-----\n", "")
                 .Replace("-----END PUBLIC KEY-----", "")
                 .Replace("\n", "");
-            var publicKeyParam = (RsaKeyParameters) PublicKeyFactory.CreateKey(Convert.FromBase64String(publicKey));
+            var publicKeyParam = (RsaKeyParameters)PublicKeyFactory.CreateKey(Convert.FromBase64String(publicKey));
             var publicKeyXml =
                 $"<RSAKeyValue><Modulus>{Convert.ToBase64String(publicKeyParam.Modulus.ToByteArrayUnsigned())}</Modulus><Exponent>{Convert.ToBase64String(publicKeyParam.Exponent.ToByteArrayUnsigned())}</Exponent></RSAKeyValue>";
 
@@ -200,11 +200,9 @@ namespace ColinChang.OssHelper
                 throw new OssException($"{obj.Object} is oversize");
             }
 
-            if (!options.AllowedMimeTypes.Contains(obj.MimeType))
-            {
-                ossClient.DeleteObject(obj.Bucket, obj.Object);
-                throw new OssException("unsupported file format");
-            }
+            if (options.AllowedMimeTypes.Contains(obj.MimeType)) return;
+            ossClient.DeleteObject(obj.Bucket, obj.Object);
+            throw new OssException("unsupported file format");
         }
     }
 }
