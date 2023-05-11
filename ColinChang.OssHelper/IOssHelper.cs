@@ -55,6 +55,15 @@ namespace ColinChang.OssHelper
         Task<Stream> DownloadAsync(string objectName);
 
         /// <summary>
+        /// 上传对象
+        /// </summary>
+        /// <param name="filename">文件名</param>
+        /// <param name="objectType">对象类型. 0:Photo, 1:Video, 2:Application, 3:Other</param>
+        /// <param name="data">上传内容</param>
+        /// <returns></returns>
+        Task<PutObjectResult> UploadAsync(string filename, int objectType, byte[] data);
+
+        /// <summary>
         /// 删除对象
         /// </summary>
         /// <param name="objectName"></param>
@@ -67,14 +76,5 @@ namespace ColinChang.OssHelper
         /// <param name="objectNames"></param>
         /// <returns></returns>
         Task<DeleteObjectsResult> DeleteObjectsAsync(IList<string> objectNames);
-
-        /// <summary>
-        /// 上传对象
-        /// </summary>
-        /// <param name="fileName">文件名</param>
-        /// <param name="objectType">对象类型. 0:Photo, 1:Video, 2:Application, 3:Other</param>
-        /// <param name="data">上传内容</param>
-        /// <returns></returns>
-        Task<PutObjectResult> PutObjectAsync(string fileName, int objectType, byte[] data);
     }
 }

@@ -154,6 +154,17 @@ namespace ColinChang.OssHelper
             return stream;
         }
 
+        public async Task<PutObjectResult> UploadAsync(string filename, int objectType, byte[] data)
+        {
+            var objectName =
+                Path.Combine(_options.ObjectOptions.SingleOrDefault(x => x.ObjectType == objectType)!.UploadDir,
+                    filename);
+
+            using var stream = new MemoryStream(data);
+
+            return _oss.PutObject(_options.PolicyOptions.BucketName, objectName, stream);
+        }
+
         public Task<DeleteObjectResult> DeleteObjectAsync(string objectName) =>
             Task.FromResult(_oss.DeleteObject(_options.PolicyOptions.BucketName, objectName));
 
@@ -161,15 +172,6 @@ namespace ColinChang.OssHelper
             Task.FromResult(
                 _oss.DeleteObjects(new DeleteObjectsRequest(_options.PolicyOptions.BucketName, objectNames)));
 
-        public async Task<PutObjectResult> PutObjectAsync(string fileName, int objectType, byte[] data)
-        {
-            string key = Path.Combine(_options.ObjectOptions.SingleOrDefault(x => x.ObjectType == objectType)!.UploadDir, fileName);
-
-            using var stream = new MemoryStream(data);
-
-            return _oss.PutObject(_options.PolicyOptions.BucketName, key, stream);
-        }
-        
         public void Dispose() =>
             HttpClient?.Dispose();
     }

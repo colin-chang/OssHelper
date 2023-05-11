@@ -58,6 +58,15 @@ Task DownloadAsync(string objectName, string filename);
 Task<Stream> DownloadAsync(string objectName);
 
 /// <summary>
+/// 上传对象
+/// </summary>
+/// <param name="fileName">文件名</param>
+/// <param name="objectType">对象类型. 0:Photo, 1:Video, 2:Application, 3:Other</param>
+/// <param name="data">上传内容</param>
+/// <returns></returns>
+Task<PutObjectResult> PutObjectAsync(string fileName, int objectType, byte[] data);
+
+/// <summary>
 /// 删除对象
 /// </summary>
 /// <param name="objectName"></param>

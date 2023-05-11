@@ -3,14 +3,14 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <Authors>Colin Chang</Authors>
-        <Copyright>https://ccstudio.com.cn</Copyright>
+        <Copyright>https://a-nomad.com</Copyright>
         <PackageProjectUrl>https://github.com/colin-chang/OssHelper</PackageProjectUrl>
         <RepositoryUrl>https://github.com/colin-chang/OssHelper</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
         <PackageTags>aliyun oss sts policy callback app web</PackageTags>
         <Description>Oss Helper for .Net Core, which provide STS,Policy Authentication and common callback functions.</Description>
-        <PackageReleaseNotes>修改ListObjects返回类型</PackageReleaseNotes>
-        <PackageVersion>1.2.5</PackageVersion>
+        <PackageReleaseNotes>更新upload方法名</PackageReleaseNotes>
+        <PackageVersion>1.2.7</PackageVersion>
         <PackageIcon>icon.png</PackageIcon>
         <PackageIconUrl>https://raw.githubusercontent.com/colin-chang/OssHelper/main/icon.png</PackageIconUrl>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -25,16 +25,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="aliyun-net-sdk-sts" Version="3.1.0" />
+        <PackageReference Include="aliyun-net-sdk-sts" Version="3.1.1" />
         <PackageReference Include="Aliyun.OSS.SDK.NetCore" Version="2.13.0" />
         <PackageReference Include="XC.BouncyCastle.Crypto" Version="1.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="6.0.0" />
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="7.0.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
     <ItemGroup>

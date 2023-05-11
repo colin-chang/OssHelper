@@ -3,14 +3,14 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <Authors>Colin Chang</Authors>
-        <Copyright>https://ccstudio.com.cn</Copyright>
+        <Copyright>https://a-nomad.com</Copyright>
         <PackageProjectUrl>https://github.com/colin-chang/OssHelper</PackageProjectUrl>
         <RepositoryUrl>https://github.com/colin-chang/OssHelper</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
         <PackageTags>aliyun oss sts policy callback app web multiple clients</PackageTags>
         <Description>an extension for OssHelper to support multiple clients in applications.</Description>
         <PackageReleaseNotes>extend ListObjects function</PackageReleaseNotes>
-        <PackageVersion>1.0.4</PackageVersion>
+        <PackageVersion>1.0.5</PackageVersion>
         <PackageIcon>icon.png</PackageIcon>
         <PackageIconUrl>https://raw.githubusercontent.com/colin-chang/OssHelper/main/icon.png</PackageIconUrl>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -26,8 +26,8 @@
 
     <ItemGroup>
         <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
-        <PackageReference Include="AutoMapper" Version="11.0.1" />
-        <PackageReference Include="ColinChang.OssHelper" Version="1.2.4" />
+        <PackageReference Include="AutoMapper" Version="12.0.1" />
+        <PackageReference Include="ColinChang.OssHelper" Version="1.2.6" />
     </ItemGroup>
 
     <ItemGroup>
