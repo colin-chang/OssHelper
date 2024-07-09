@@ -11,6 +11,7 @@ using Aliyun.Acs.Core;
 using Aliyun.Acs.Core.Auth.Sts;
 using Aliyun.Acs.Core.Profile;
 using Aliyun.OSS;
+using AutoMapper;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Http;
@@ -54,7 +55,15 @@ namespace ColinChang.OssHelper
                     RoleSessionName = _options.StsOptions.RoleSessionName,
                     DurationSeconds = _options.StsOptions.Expiration
                 };
-                return client.GetAcsResponse(request)?.Credentials;
+                var credentials = client.GetAcsResponse(request)?.Credentials;
+                if (credentials == null)
+                    return null;
+
+                var stsCredentials = new MapperConfiguration(cfg =>
+                        cfg.CreateMap<AssumeRoleResponse.AssumeRole_Credentials, StsCredentials>())
+                    .CreateMapper().Map<StsCredentials>(credentials);
+                stsCredentials.BucketName = _options.StsOptions.BucketName;
+                return stsCredentials;
             });
         }
 
@@ -102,7 +111,8 @@ namespace ColinChang.OssHelper
                     Expire = ((expireTime.Ticks - 621355968000000000) / 10000000L)
                         .ToString(CultureInfo.InvariantCulture),
                     Callback = callback,
-                    Dir = dir
+                    Dir = dir,
+                    BucketName = _options.PolicyOptions.BucketName
                 };
             });
         }

@@ -19,6 +19,7 @@ namespace ColinChang.OssHelper
 
     public abstract class AliyunCommonOptions
     {
+        public string BucketName { get; set; }
         [Required] public string AccessKeyId { get; set; }
         [Required] public string AccessKeySecret { get; set; }
         [Required] public string EndPoint { get; set; }
@@ -39,7 +40,6 @@ namespace ColinChang.OssHelper
 
     public class PolicyOptions : AliyunCommonOptions
     {
-        [Required] public string BucketName { get; set; }
         [Required] public string BucketUrl { get; set; }
         [Required] public string Host { get; set; }
         [Required] public string CallbackUrl { get; set; }
